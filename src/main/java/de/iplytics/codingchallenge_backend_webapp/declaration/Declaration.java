@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Size;
 
 import de.iplytics.codingchallenge_backend_webapp.patents.Patent;
 import de.iplytics.codingchallenge_backend_webapp.standards.Standard;
@@ -20,6 +21,7 @@ import lombok.NoArgsConstructor;
 public class Declaration {
 
     @Id
+    @Size(max=255)
     private String declarationId;
     @ManyToOne
     @JoinColumn(name = "publicationNumber")
