@@ -39,6 +39,6 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/sa/eclipse/install/eclipse/lombok.jar"/>
+	<classpathentry kind="lib" path="/home/sneha/Desktop/lombok-1.18.10.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

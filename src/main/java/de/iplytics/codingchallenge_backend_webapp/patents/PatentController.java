@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+
 @RestController
 @RequestMapping("/patents")
 public class PatentController {
@@ -46,8 +48,13 @@ public class PatentController {
 	}
 
 	@ExceptionHandler(IllegalArgumentException.class)
-	public ResponseEntity<Exception> handleIOException(IllegalArgumentException exception) {
+	public ResponseEntity<Exception> handleNotFoundException(IllegalArgumentException exception) {
 		return new ResponseEntity<Exception>(HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(InvalidFormatException.class)
+	public ResponseEntity<Exception> handleBadRequestException(InvalidFormatException exception) {
+		return new ResponseEntity<Exception>(HttpStatus.BAD_REQUEST);
 	}
 
 }

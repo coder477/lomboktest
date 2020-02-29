@@ -37,7 +37,7 @@ public class DeclarationService {
 		Declaration declaration = Declaration.builder()
                 .declarationId(UUID.randomUUID().toString())
                 .patent(patentRepository.findById(declarationRequest.getPublicationNumber()).get())
-                .standard(standardRepository.findById(standardId))
+                .standard(standardRepository.findById(standardId).get())
                 .build();
 		
 		System.out.println(declaration+" qwbhfevidg ");
