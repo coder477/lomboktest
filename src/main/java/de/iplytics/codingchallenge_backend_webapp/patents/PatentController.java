@@ -42,6 +42,7 @@ public class PatentController {
 
 	@DeleteMapping("/{publicationNumber}")
 	public ResponseEntity deletePatent(@PathVariable("publicationNumber") String id) {
+		System.out.println("hereeee del");
 		patentService.deletePatent(id);
 		return new ResponseEntity(HttpStatus.NO_CONTENT);
 	}

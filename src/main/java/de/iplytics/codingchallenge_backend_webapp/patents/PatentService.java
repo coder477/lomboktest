@@ -3,12 +3,15 @@ package de.iplytics.codingchallenge_backend_webapp.patents;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+
+import de.iplytics.codingchallenge_backend_webapp.declaration.DeclarationNotFoundException;
 
 @Service
 public class PatentService {
 
-	private PatentRepository patentRepository;
+	public PatentRepository patentRepository;
 
 	@Autowired
 	public PatentService(PatentRepository patentRepository) {
@@ -34,6 +37,16 @@ public class PatentService {
 	}
 
 	public void deletePatent(String publicationNumber) {
-		patentRepository.deleteById(publicationNumber);
+		System.out.println("hereeee dels");
+
+		try {
+			System.out.println("hereeee del try");
+
+			patentRepository.deleteById(publicationNumber);
+		} catch (EmptyResultDataAccessException e) {
+			System.out.println("hereeee del catch");
+
+			throw new PatentNotFoundException("Given Patent cannot be deleted");
+		}
 	}
 }
